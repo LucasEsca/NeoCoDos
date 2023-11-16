@@ -1,0 +1,53 @@
+			Explicacion del codigo
+---Validación de Datos---
+1. Registro de Persona
+Cuando se registra a una nueva persona, nos aseguramos de que la información proporcionada sea correcta.
+
+-DNI Único: No puede hbaer 2 personas el mismo DNI. Si tratas de crear 2 personas con el mismo DNI se generara un error y lanzara un string.
+
+-Datos Personales: El nombre y el apellido no pueden estar vacíos. Si escribes alguno, se generara un error y lanzara otro string.
+
+-Fecha de Nacimiento: Nos aseguramos de que la fecha de nacimiento tenga el formato correcto (día/mes/año). Se incluyeron restricciones como que el día esté entre 1 y 31(incluyendolos), y el mes entre 1 y 12(incluyendolos). Si algo no cuadra, nuevamente, lanzara error y otro string.
+
+2. Listar Personas
+Cuando queremos ver a todas las personas registradas, el programa nos muestra una lista. Si no hay nadie, nos dicen "No hay nadie registrado todavía."
+
+---Cómo Funciona---
+1. Menú de Opciones
+Cuando iniciamos el programa, aparece un menú con tres opciones:
+
+Opción 1: Registra a una persona nueva.
+Opción 2: Muestra la lista de personas registradas.
+Opción 3: Cierra el programa.
+2. Funcionalidad
+Se pueden elegir las opciones 1 y 2 de manera indefinida hasta cerrar el programa.
+
+3. Clase Persona
+Cada persona tiene un nombre, apellido, DNI y fecha de nacimiento. El programa organiza esta información en "clase Persona" para que sea más fácil de manejar.
+
+4. Evitando Duplicados
+El programa se asegura de que no se registren a dos personas con el mismo DNI. Si eso pasa,generara error y lanzara un string.
+
+
+
+			Informe de Errores y Soluciones
+
+Error 1: Validacion del DNI
+-Problema: Al intentar registrar una nueva persona, el programa decía que ya existía alguien con el mismo DNI, siendo que no era asi
+
+-Solución: Resulta que la verificación de DNI único no estaba funcionando bien.Ya que use la función incorrecta para comparar cadenas. Probe con equals por equalsIgnoreCase y listo, solucionado.
+
+Error 2: Fecha de Nacimiento
+-Problema: Cuando intentamos registrar a alguien, la aplicación no aceptaba algunas fechas de nacimiento válidas.
+
+-Solución: Después de revisar el código, vi que la expresión regular para verificar la fecha no estaba permitiendo fechas como "01/01/2023". Se cambio la expresión regular a "\\d{1,2}/\\d{1,2}/\\d{4}" y ahora acepta más formatos de fecha.
+
+Error 3: Bucle Infinito en el Menú
+-Problema: Al seleccionar la opción 3 para salir, la aplicación no terminaba.
+
+-Solución: Resulta que la condición del bucle do-while no se evaluaba correctamente. Se cambio la opcion != 3 por opcion != 3 && opcion >= 1 && opcion <= 3 para asegurarnos de que solo aceptara opciones válidas.
+
+Error 4: Mensaje Confuso al Validar Datos Personales
+-Problema: Cuando olvidamos poner el nombre o el apellido, el mensaje de error era un poco confuso y no decía específicamente qué dato faltaba.
+
+-Solución: Se corrigio el mensaje de error en la función validarDatos. Ahora, si olvidamos poner el nombre, dice "¡Olvidaste poner tu nombre!"(o similar) y lo mismo para el apellido.
