@@ -9,7 +9,7 @@ package Tareas.Modulo2;
  * @author Usuario
  */
 public class Libro {
-     private String titulo;
+    private String titulo;
     private String autor;
     private String genero;
     private boolean alquilado;
@@ -56,13 +56,13 @@ public class Libro {
     }
 
     @Override
-    public String toString() {
-        return "Libro{" +
-                "titulo='" + titulo + '\'' +
-                ", autor='" + autor + '\'' +
-                ", genero='" + genero + '\'' +
-                ", alquilado=" + alquilado +
-                '}';
-    }
-    
+public String toString() {
+    String estadoAlquiler = alquilado ? "Alquilado" : "Disponible";
+    return "Libro{" +
+            "titulo='" + titulo + '\'' +
+            ", autor='" + autor + '\'' +
+            ", genero='" + genero + '\'' +
+            ", estado='" + estadoAlquiler + '\'' +
+            '}';
+}
 }

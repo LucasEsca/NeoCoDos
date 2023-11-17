@@ -91,25 +91,16 @@ public class Biblioteca {
         return usuarios.stream().anyMatch(usuario -> usuario.getMail().equalsIgnoreCase(mail));
     }
 
-    // Métodos para búsquedas de libros por título, autor o género
+    public List<Libro> buscarLibrosPorPalabraClave(String palabraClave) {
+    String keyword = palabraClave.toLowerCase();
 
-    public List<Libro> buscarLibrosPorTitulo(String titulo) {
-        return libros.stream()
-                .filter(libro -> libro.getTitulo().toLowerCase().contains(titulo.toLowerCase()))
-                .collect(Collectors.toList());
-    }
-
-    public List<Libro> buscarLibrosPorAutor(String autor) {
-        return libros.stream()
-                .filter(libro -> libro.getAutor().toLowerCase().contains(autor.toLowerCase()))
-                .collect(Collectors.toList());
-    }
-
-    public List<Libro> buscarLibrosPorGenero(String genero) {
-        return libros.stream()
-                .filter(libro -> libro.getGenero().toLowerCase().contains(genero.toLowerCase()))
-                .collect(Collectors.toList());
-    }
+    return libros.stream()
+            .filter(libro -> 
+                    libro.getTitulo().toLowerCase().contains(keyword) ||
+                    libro.getAutor().toLowerCase().contains(keyword) ||
+                    libro.getGenero().toLowerCase().contains(keyword))
+            .collect(Collectors.toList());
+}
 
     // Otros métodos relacionados con la gestión de usuarios
 
