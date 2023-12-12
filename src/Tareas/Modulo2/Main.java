@@ -33,7 +33,7 @@ public class Main {
                     mostrarLibros(biblioteca);
                     break;
                 case 4:
-                    System.exit(0); // Salir del programa
+                    System.exit(0); 
                 default:
                     JOptionPane.showMessageDialog(null, "Opción no válida. Inténtelo de nuevo.");
             }
@@ -57,56 +57,41 @@ public class Main {
  private static void registrarUsuario(Biblioteca biblioteca) {
     String nombre = JOptionPane.showInputDialog("Ingrese su nombre:");
 
-    // Verificar si el usuario presionó cancelar
     if (nombre == null) {
-        // Redirigir al menú principal
         return;
     }
 
     String apellido = JOptionPane.showInputDialog("Ingrese su apellido:");
-
-    // Verificar si el usuario presionó cancelar
     if (apellido == null) {
-        // Redirigir al menú principal
         return;
     }
 
     String mail = JOptionPane.showInputDialog("Ingrese su correo electrónico:");
-
-    // Verificar si el usuario presionó cancelar
     if (mail == null) {
-        // Redirigir al menú principal
         return;
     }
 
-    // Verificar si el correo electrónico ya existe
     while (biblioteca.existeUsuarioConMail(mail)) {
         JOptionPane.showMessageDialog(null, "Ya existe un usuario registrado con ese correo electrónico. Inténtelo de nuevo.");
 
         mail = JOptionPane.showInputDialog("Ingrese su correo electrónico:");
-
-        // Verificar si el usuario presionó cancelar
         if (mail == null) {
-            // Redirigir al menú principal
             return;
         }
     }
 
     String contraseña = JOptionPane.showInputDialog("Ingrese su contraseña:");
-
-    // Verificar si el usuario presionó cancelar
     if (contraseña == null) {
-        // Redirigir al menú principal
         return;
     }
 
-    // Validar campos no vacíos
+ 
     if (nombre.isEmpty() || apellido.isEmpty() || mail.isEmpty() || contraseña.isEmpty()) {
         JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos.");
         return;
     }
 
-    // Crear y registrar el usuario en la biblioteca
+
     Usuario nuevoUsuario = new Usuario(nombre, apellido, mail, contraseña);
     biblioteca.registrarUsuario(nuevoUsuario);
 
@@ -117,7 +102,7 @@ public class Main {
     String mail = JOptionPane.showInputDialog("Ingrese su correo electrónico:");
     String contraseña = JOptionPane.showInputDialog("Ingrese su contraseña:");
 
-    // Buscar al usuario en la biblioteca
+
     Usuario usuarioAutenticado = biblioteca.autenticarUsuario(mail, contraseña);
 
     if (usuarioAutenticado != null) {
@@ -148,7 +133,7 @@ public class Main {
                 generarInforme(usuario);
                 break;
             case 5:
-                return; // Volver al menú principal
+                return; 
             default:
                 JOptionPane.showMessageDialog(null, "Opción no válida. Inténtelo de nuevo.");
         }
@@ -170,7 +155,7 @@ private static void gestionarLibrosDesdeMenuBiblioteca(Biblioteca biblioteca, Us
                 devolverLibro(biblioteca, usuario);
                 break;
             case 4:
-                return; // Volver al menú de la biblioteca
+                return; 
             default:
                 JOptionPane.showMessageDialog(null, "Opción no válida. Inténtelo de nuevo.");
         }
@@ -225,7 +210,7 @@ private static void gestionarLibreria(Biblioteca biblioteca, Usuario usuario) {
                 verListaLibros(biblioteca);
                 break;
             case 5:
-                return; // Volver al menú de la biblioteca
+                return;
             default:
                 JOptionPane.showMessageDialog(null, "Opción no válida. Inténtelo de nuevo.");
         }
@@ -254,16 +239,12 @@ private static void verListaLibros(Biblioteca biblioteca) {
 
 private static void agregarLibro(Biblioteca biblioteca) {
     String titulo = JOptionPane.showInputDialog("Ingrese el título del libro:");
-
-    // Verificar si se presionó "Cancelar" y regresar si es así
     if (titulo == null) {
         return;
     }
 
     String autor = JOptionPane.showInputDialog("Ingrese el autor del libro:");
     String genero = JOptionPane.showInputDialog("Ingrese el género del libro:");
-
-    // Verificar si se presionó "Cancelar" y regresar si es así
     if (autor == null || genero == null) {
         return;
     }
@@ -276,8 +257,6 @@ private static void agregarLibro(Biblioteca biblioteca) {
 
 private static void eliminarLibro(Biblioteca biblioteca) {
     String titulo = JOptionPane.showInputDialog("Ingrese el título del libro a eliminar:");
-
-    // Verificar si se presionó "Cancelar" y regresar si es así
     if (titulo == null) {
         return;
     }
@@ -292,8 +271,6 @@ private static void eliminarLibro(Biblioteca biblioteca) {
 
 private static void editarLibro(Biblioteca biblioteca) {
     String titulo = JOptionPane.showInputDialog("Ingrese el título del libro a editar:");
-
-    // Verificar si se presionó "Cancelar" y regresar al menú de gestionar libros si es así
     if (titulo == null) {
         return;
     }
@@ -302,8 +279,6 @@ private static void editarLibro(Biblioteca biblioteca) {
 
     if (libroExistente != null) {
         String nuevoTitulo = JOptionPane.showInputDialog("Ingrese el nuevo título del libro:");
-
-        // Verificar si se presionó "Cancelar" y regresar al menú de gestionar libros si es así
         if (nuevoTitulo == null) {
             return;
         }
@@ -326,8 +301,6 @@ private static void editarLibro(Biblioteca biblioteca) {
 
 private static void buscarLibros(Biblioteca biblioteca) {
     String criterio = JOptionPane.showInputDialog("Ingrese la palabra clave para la búsqueda:");
-
-    // Verificar si se presionó "Cancelar" y regresar al menú de la biblioteca
     if (criterio == null) {
         return;
     }
@@ -338,7 +311,12 @@ private static void buscarLibros(Biblioteca biblioteca) {
 
 private static void alquilarLibro(Biblioteca biblioteca, Usuario usuario) {
     String titulo = JOptionPane.showInputDialog("Ingrese el título del libro a alquilar:");
-    
+
+    if (titulo == null) {
+        JOptionPane.showMessageDialog(null, "Operación cancelada. Volviendo al menú de gestión de libros.");
+        return;
+    }
+
     if (biblioteca.alquilarLibro(usuario, titulo)) {
         JOptionPane.showMessageDialog(null, "Libro alquilado exitosamente: " + titulo);
     } else {
@@ -349,6 +327,11 @@ private static void alquilarLibro(Biblioteca biblioteca, Usuario usuario) {
 private static void devolverLibro(Biblioteca biblioteca, Usuario usuario) {
     String titulo = JOptionPane.showInputDialog("Ingrese el título del libro a devolver:");
 
+    if (titulo == null) {
+        JOptionPane.showMessageDialog(null, "Operación cancelada. Volviendo al menú de gestión de libros.");
+        return;
+    }
+
     if (biblioteca.devolverLibro(usuario, titulo)) {
         JOptionPane.showMessageDialog(null, "Libro devuelto exitosamente: " + titulo);
     } else {
@@ -356,9 +339,15 @@ private static void devolverLibro(Biblioteca biblioteca, Usuario usuario) {
     }
 }
 
+
 private static void generarInforme(Usuario usuario) {
     String informe = JOptionPane.showInputDialog("Escriba su informe o estadísticas sobre la biblioteca:");
-    // Puedes guardar o procesar el informe según tus necesidades
+
+    if (informe == null) {
+        JOptionPane.showMessageDialog(null, "Generación de informe cancelada. Volviendo al menú de la biblioteca.");
+        return;
+    }
+
     JOptionPane.showMessageDialog(null, "Informe enviado exitosamente. ¡Gracias por tu feedback!");
 }
 

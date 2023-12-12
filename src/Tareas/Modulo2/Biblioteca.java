@@ -28,10 +28,9 @@ public class Biblioteca {
         agregarLibro(new Libro("1984", "George Orwell", "Distopía"));
         agregarLibro(new Libro("Don Quijote de la Mancha", "Miguel de Cervantes", "Novela"));
         agregarLibro(new Libro("Crimen y castigo", "Fiodor Dostoievski", "Novela psicológica"));
-        // Agrega más libros por defecto si es necesario
+      
     }
 
-    // Métodos getter para libros y usuarios
 
     public List<Libro> getLibros() {
         return libros;
@@ -40,8 +39,6 @@ public class Biblioteca {
     public List<Usuario> getUsuarios() {
         return usuarios;
     }
-
-    // Métodos para operaciones en la biblioteca
 
     public void agregarLibro(Libro libro) {
         libros.add(libro);
@@ -101,8 +98,6 @@ public class Biblioteca {
                     libro.getGenero().toLowerCase().contains(keyword))
             .collect(Collectors.toList());
 }
-
-    // Otros métodos relacionados con la gestión de usuarios
 
     public void registrarUsuario(Usuario usuario) {
         usuarios.add(usuario);

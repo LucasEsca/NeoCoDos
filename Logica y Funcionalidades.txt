@@ -1,0 +1,50 @@
+     ---Lógica de Validación de Datos:---
+
+1 - Validación de Campos No Vacíos:
+
+En la parte de registro de usuarios, aseguré que todos los campos como nombre, apellido, correo electrónico 
+y contraseña no estuvieran vacíos. Si alguno lo estaba, mostraba un mensaje para que completaran todos los campos, al finalizar el registro.
+
+2 - Correo Electrónico Único:
+
+Quería evitar que alguien se registrara con el mismo correo electrónico más de una vez, como medio de validazion. Así que, 
+si alguien intentaba registrarse con un correo que ya existía, les pedía que lo intentaran con otro, dado que no queria complejizarlo
+se puede usar cualquier string, asi no cumpla las caracteristicas de un email.
+
+3 - Cancelación de Operaciones:
+
+En las funciones como alquilar y devolver libros, entre otras, implementé la posibilidad de cancelar la operación. 
+Si en algún momento el usuario decide que no quiere alquilar o devolver un libro por ejemplo, pueden presionar "Cancelar", 
+y la aplicación vuelve al menú de gestión de libros.
+
+     ---Implementación de Funcionalidades:---
+
+1 - Registro e Inicio de Sesión:
+
+Para el registro, pedí al usuario que ingresara su información y luego creé un nuevo objeto de la clase 
+Usuario con esos datos. También me aseguré de que el correo electrónico fuera único.
+Para el inicio de sesión, pedí al usuario que ingresara su correo y contraseña. Validé estas 
+credenciales comparándolas con los usuarios registrados. Luego se podria mejorar con una base de datos, para retener la informacion.
+
+2 - Gestión de Libros:
+
+Implementé la capacidad de agregar, eliminar y buscar libros en la biblioteca. 
+La búsqueda puede realizarse por título, autor o género. Mostré mensajes claros si el libro 
+no se encontraba o si la operación se realizaba con éxito. Tambien deje cargada una lsita de libros de base 
+para facilitar el chequeo de las funciones, estos tambien pueden ser editados, eliminados, alquilados, etc.
+
+3 - Alquiler y Devolución de Libros:
+
+Para alquilar un libro, verifiqué que el libro estuviera disponible y luego cambié su estado a "alquilado". 
+Si alguien intentaba alquilar un libro ya alquilado, les informaba.
+La devolución de libros fue similar: comprobé si el libro estaba en la lista de libros 
+alquilados y lo marcaba como disponible.
+
+4 - Generación de Informes:
+
+Implementé la posibilidad de que los usuarios generaran informes o estadísticas sobre el uso de la biblioteca. 
+Para mantener las cosas simples, solo solicité que escribieran su informe, a futuro, la idea podria ser
+el guardar una lista con los informes, quiza poner una division, si era un informe o una estadistica.
+
+Como bonus, tambien considero que utilizando un JFrame o un JDialog, podria llegar a quedar una mejor aplicacion a 
+nivel visual, pero es algo que me llevaria mas tiempo y no considero tener la suficiente capacidad para lograrlo en estos momentos

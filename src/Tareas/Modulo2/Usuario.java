@@ -26,8 +26,6 @@ public class Usuario {
         this.contraseña = contraseña;
     }
 
-    // Métodos getter y setter para los atributos
-
     public String getNombre() {
         return nombre;
     }

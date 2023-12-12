@@ -21,7 +21,6 @@ public class Libro {
         this.alquilado = false;
     }
 
-    // Métodos getter y setter para los atributos
 
     public String getTitulo() {
         return titulo;

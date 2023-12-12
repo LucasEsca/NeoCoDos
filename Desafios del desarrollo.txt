@@ -1,0 +1,44 @@
+        ---Desafios al Desarrollar---
+
+
+----Campos Vacíos en el Registro de Usuarios
+
+Un problema inicial fue asegurarme de que los usuarios completaran todos los campos al registrarse. 
+Al principio, algunos usuarios dejaban algunos campos en blanco y eso generaba problemas.
+
+Solución: Validación de Campos No Vacíos
+
+Implementé una validación simple para verificar que todos los campos estuvieran llenos. 
+Si alguien intentaba registrarse sin completar todo, les mostraba un mensaje diciendo que necesitaban llenar 
+todos los campos.
+
+----Correos Electrónicos Duplicados
+
+El siguiente desafío fue evitar que alguien se registrara más de una vez con el mismo correo electrónico. 
+Quería que cada usuario fuese único.
+
+Solución: Verificación de Correo Electrónico Único
+
+Agregué un pequeño chequeo para asegurarme de que el correo electrónico fuera único antes de permitir 
+que alguien se registrara. Si intentaban usar un correo ya existente, les pedía que escribieran otro.
+
+----Cancelar Operaciones
+
+Cuando implementé la función de alquilar y devolver libros, me di cuenta de que necesitaba una 
+forma para que los usuarios cancelaran las operaciónes si cambiaban de opinión.
+
+Solución: Implementación de la Opción "Cancelar"
+
+Añadí la opción de "Cancelar" en los pasos de alquilar y devolver libros. Así como en las otras funciones, si alguien hacía 
+clic por error o decidía no continuar, podían presionar "Cancelar" y volver al menú en el que se encontraba sin ningún problema.
+
+----Diseño de Interfaz
+
+Trate de implementar otra opcion a la hora de diseñar la aplicacion, la cual me retraso y no podia solucionarlo de manera simple,
+sumado a que mientras mas investigaba mas me daba cuenta que necesitaba mas tiempo para implementarlo
+
+Solución: Mantenerlo Simple
+
+Opté por un diseño simple y utilicé componentes básicos como botones y cuadros de texto. 
+Me centré en hacer que la interfaz fuera fácil de entender en lugar de algo muy elaborado, utilizando JOptionPane,
+no es lo mas agradable visualmente pero funciona y es algo mas simple para los usuarios.
